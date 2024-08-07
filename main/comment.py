@@ -36,11 +36,11 @@ def add_comment(pid):
             return jsonify({"message":"Add Comment","status":"pending"}), 202
 
 
-@comment.route('/post/<int:pid>/edit/<int:cid>', methods = ['GET', 'PUT','PATCH'] ,endpoint = 'edit_comment')
+@comment.route('/post/<int:pid>/edit/<int:cid>', methods = ['GET', 'POST'] ,endpoint = 'edit_comment')
 @jwt_required()
 def edit_comment(pid,cid):
 
-    if request.method in ['PUT', 'PATCH']:
+    if request.method == 'POST':
        
             content = request.form.get('content')
 

@@ -57,10 +57,10 @@ def create_post():
 
 
 
-@post.route('/edit_post/<int:id>', methods=['GET','PUT', 'PATCH'])
+@post.route('/edit_post/<int:id>', methods=['GET','POST'])
 @jwt_required()
 def edit_post(id):
-    if request.method in ['PUT', 'PATCH']:
+    if request.method == 'POST':
         current_user_id = get_jwt_identity()
         editpost = Posts.query.filter_by(post_id=id).first()
 
