@@ -4,6 +4,8 @@ from flask_bcrypt import Bcrypt
 from os import path
 from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager
+
+from dotenv import load_dotenv
 import os
 
 db = SQLAlchemy()
@@ -14,9 +16,9 @@ jwt = JWTManager()
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'sgwdb3e821e3debef'
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://postgres:Code1234@localhost:5000/{DB_NAME}'
+   # app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://postgres:Code1234@localhost:5000/{DB_NAME}'
     #app.config['JWT_SECRET_KEY'] = 'we3efef0323fehfuhfff'
-   # app.config['SQLALCHEMY_DATABASE_URI'] =  'postgresql://blogs_hm6b_user:gkxZbffIlpELTKwAcFwxCDt7zf9sNMPG@dpg-cqp1pfo8fa8c73c4t9ig-a.oregon-postgres.render.com/blogs_hm6b'
+    app.config['SQLALCHEMY_DATABASE_URI'] =  os.getenv('DATABASE_URL')
     db.init_app(app)
     migrate = Migrate(app,db)
     jwt.init_app(app)
