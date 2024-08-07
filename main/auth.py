@@ -5,7 +5,7 @@ from sqlalchemy import create_engine
 from datetime import timedelta, datetime
 from .models import Users
 from . import post
-from app import db, bcrypt
+from main import db, bcrypt
 from flask_jwt_extended import create_access_token, create_refresh_token, jwt_required
 import re
 
