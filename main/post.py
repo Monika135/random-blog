@@ -3,7 +3,7 @@ from sqlalchemy.exc import IntegrityError
 from datetime import datetime
 from werkzeug.utils import secure_filename
 from .models import Posts
-from app import db
+from main import db
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from .drive import upload_image_to_drive, get_image_url
 

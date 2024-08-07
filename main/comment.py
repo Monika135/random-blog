@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from datetime import datetime
 from .models import Comments
-from app import db
+from main import db
 from flask_jwt_extended import jwt_required,get_jwt_identity
 
 
