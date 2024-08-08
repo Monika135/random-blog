@@ -120,10 +120,13 @@ def all_post():
     posts = Posts.query.all()
     posts_list = []
 
+
     for post in posts:
+        user = Users.query.get(post.author_id)
         post_data = {
             'post_id': post.post_id,
             'author_id': post.author_id,
+            'author_username': user.username,
             'title': post.title,
             'content': post.content,
             'image_url': post.image,
